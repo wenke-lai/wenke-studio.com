@@ -1,5 +1,12 @@
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/shadcn/breadcrumb";
 import { Badge } from "@/components/shadcn/badge";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/shadcn/breadcrumb";
 import { CalendarIcon } from "lucide-react";
 
 // Sample blog posts data (same as in blog/page.tsx)
@@ -7,7 +14,8 @@ const blogPosts = [
   {
     id: 1,
     title: "Getting Started with Next.js",
-    description: "Learn how to build modern web applications with Next.js, the React framework for production. This guide covers setup, routing, and deployment.",
+    description:
+      "Learn how to build modern web applications with Next.js, the React framework for production. This guide covers setup, routing, and deployment.",
     date: "2023-05-15",
     tags: ["Next.js", "React", "Web Development"],
     slug: "getting-started-with-nextjs",
@@ -51,7 +59,8 @@ Next.js is a powerful framework that makes building React applications faster an
   {
     id: 2,
     title: "Mastering Tailwind CSS",
-    description: "Tips and tricks for using Tailwind CSS effectively in your projects. Learn about customization, optimization, and best practices.",
+    description:
+      "Tips and tricks for using Tailwind CSS effectively in your projects. Learn about customization, optimization, and best practices.",
     date: "2023-06-22",
     tags: ["CSS", "Tailwind", "Design"],
     slug: "mastering-tailwind-css",
@@ -111,20 +120,20 @@ interface BlogPostPageProps {
 
 export default function BlogPostPage({ params }: BlogPostPageProps) {
   // Find the blog post with the matching slug
-  const post = blogPosts.find(post => post.slug === params.slug);
-  
+  const post = blogPosts.find((post) => post.slug === params.slug);
+
   // If post not found, show a message
   if (!post) {
     return (
-      <div className="container py-12">
+      <div className="py-12">
         <h1 className="text-4xl font-bold">Blog Post Not Found</h1>
         <p className="mt-4">The blog post you're looking for doesn't exist.</p>
       </div>
     );
   }
-  
+
   return (
-    <div className="container py-12 space-y-8">
+    <div className="py-12 space-y-8">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -140,42 +149,65 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      
+
       <article className="prose prose-lg dark:prose-invert max-w-none">
         <div className="space-y-4 not-prose">
           <h1 className="text-4xl font-bold tracking-tight">{post.title}</h1>
-          
+
           <div className="flex items-center gap-2 text-muted-foreground">
             <CalendarIcon className="h-4 w-4" />
-            <time dateTime={post.date}>{new Date(post.date).toLocaleDateString()}</time>
+            <time dateTime={post.date}>
+              {new Date(post.date).toLocaleDateString()}
+            </time>
           </div>
-          
+
           <div className="flex flex-wrap gap-2">
-            {post.tags.map(tag => (
-              <Badge key={tag} variant="secondary">{tag}</Badge>
+            {post.tags.map((tag) => (
+              <Badge key={tag} variant="secondary">
+                {tag}
+              </Badge>
             ))}
           </div>
         </div>
-        
+
         {/* Blog post content */}
         <div className="mt-8">
-          {post.content.split('\n').map((line, index) => {
-            if (line.startsWith('# ')) {
-              return <h1 key={index} className="text-3xl font-bold mt-8 mb-4">{line.substring(2)}</h1>;
-            } else if (line.startsWith('## ')) {
-              return <h2 key={index} className="text-2xl font-bold mt-6 mb-3">{line.substring(3)}</h2>;
-            } else if (line.startsWith('### ')) {
-              return <h3 key={index} className="text-xl font-bold mt-5 mb-2">{line.substring(4)}</h3>;
-            } else if (line.startsWith('```')) {
+          {post.content.split("\n").map((line, index) => {
+            if (line.startsWith("# ")) {
               return (
-                <pre key={index} className="bg-muted p-4 rounded-md overflow-x-auto my-4">
+                <h1 key={index} className="text-3xl font-bold mt-8 mb-4">
+                  {line.substring(2)}
+                </h1>
+              );
+            } else if (line.startsWith("## ")) {
+              return (
+                <h2 key={index} className="text-2xl font-bold mt-6 mb-3">
+                  {line.substring(3)}
+                </h2>
+              );
+            } else if (line.startsWith("### ")) {
+              return (
+                <h3 key={index} className="text-xl font-bold mt-5 mb-2">
+                  {line.substring(4)}
+                </h3>
+              );
+            } else if (line.startsWith("```")) {
+              return (
+                <pre
+                  key={index}
+                  className="bg-muted p-4 rounded-md overflow-x-auto my-4"
+                >
                   <code>{line.substring(3)}</code>
                 </pre>
               );
-            } else if (line.trim() === '') {
+            } else if (line.trim() === "") {
               return <div key={index} className="h-4"></div>;
             } else {
-              return <p key={index} className="my-2">{line}</p>;
+              return (
+                <p key={index} className="my-2">
+                  {line}
+                </p>
+              );
             }
           })}
         </div>

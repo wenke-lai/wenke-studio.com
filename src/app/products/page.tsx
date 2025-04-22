@@ -1,12 +1,20 @@
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/shadcn/breadcrumb";
 import ProductList from "@/components/products/ProductList";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/shadcn/breadcrumb";
 
 // Sample products data
 const productsData = [
   {
     id: 1,
     title: "Project Management Tool",
-    description: "A comprehensive tool for managing projects, tasks, and team collaboration.",
+    description:
+      "A comprehensive tool for managing projects, tasks, and team collaboration.",
     image: "/products/project-tool.jpg",
     slug: "project-management-tool",
     features: [
@@ -86,7 +94,8 @@ const productsData = [
   {
     id: 6,
     title: "Task Scheduler",
-    description: "An automated task scheduler for recurring tasks and workflows.",
+    description:
+      "An automated task scheduler for recurring tasks and workflows.",
     image: "/products/scheduler.jpg",
     slug: "task-scheduler",
     features: [
@@ -103,7 +112,7 @@ const productsData = [
 
 export default function ProductsPage() {
   return (
-    <div className="container py-12 space-y-8">
+    <div className="py-12 space-y-8">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -115,14 +124,14 @@ export default function ProductsPage() {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      
+
       <div className="space-y-2">
         <h1 className="text-4xl font-bold tracking-tight">Products</h1>
         <p className="text-xl text-muted-foreground">
           Explore my portfolio of projects and applications.
         </p>
       </div>
-      
+
       <ProductList products={productsData} />
     </div>
   );

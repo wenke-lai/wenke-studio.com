@@ -155,7 +155,7 @@ const skillsData = [
 
 export default function ResumePage() {
   return (
-    <div className="container py-12 space-y-8">
+    <div className="py-12 space-y-8">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
