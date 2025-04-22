@@ -1,5 +1,7 @@
 import MainLayout from "@/components/layout/MainLayout";
+import { MicrosoftClarity } from "@/components/layout/MicrosoftClarity";
 import { Toaster } from "@/components/shadcn/sonner";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -19,6 +21,10 @@ export default function RootLayout({
       <body className="antialiased">
         <MainLayout>{children}</MainLayout>
         <Toaster />
+        <GoogleAnalytics
+          gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_PROJECT_ID!}
+        />
+        <MicrosoftClarity />
       </body>
     </html>
   );
