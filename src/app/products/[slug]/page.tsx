@@ -78,14 +78,17 @@ const productsData = [
 ];
 
 interface ProductPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default function ProductPage({ params }: ProductPageProps) {
+export default async function ProductPage({ params }: ProductPageProps) {
+  // Await the params Promise to get the actual values
+  const { slug } = await params;
+
   // Find the product with the matching slug
-  const product = productsData.find((product) => product.slug === params.slug);
+  const product = productsData.find((product) => product.slug === slug);
 
   // If product not found, show a message
   if (!product) {

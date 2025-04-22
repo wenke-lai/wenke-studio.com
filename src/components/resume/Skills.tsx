@@ -12,7 +12,7 @@ interface SkillCategory {
   category: string;
   skills: {
     name: string;
-    proficiency?: "Beginner" | "Intermediate" | "Advanced" | "Expert";
+    proficiency?: string;
   }[];
 }
 

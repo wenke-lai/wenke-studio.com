@@ -33,7 +33,7 @@ export default function Navbar() {
           <NavigationMenuList>
             {navItems.map((item) => (
               <NavigationMenuItem key={item.href}>
-                <Link href={item.href} legacyBehavior passHref>
+                <Link href={item.href}>
                   <NavigationMenuLink
                     className={cn(
                       navigationMenuTriggerStyle(),

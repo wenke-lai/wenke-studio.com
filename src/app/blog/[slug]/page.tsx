@@ -113,14 +113,17 @@ Tailwind CSS provides a different approach to styling that can significantly spe
 ];
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  // Await the params Promise to get the actual values
+  const { slug } = await params;
+
   // Find the blog post with the matching slug
-  const post = blogPosts.find((post) => post.slug === params.slug);
+  const post = blogPosts.find((post) => post.slug === slug);
 
   // If post not found, show a message
   if (!post) {
