@@ -21,11 +21,11 @@ export default function RootLayout({
       <body className="antialiased">
         <MainLayout>{children}</MainLayout>
         <Toaster />
-        <GoogleAnalytics
-          gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_PROJECT_ID!}
-        />
-        <MicrosoftClarity />
       </body>
+      <GoogleAnalytics
+        gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_PROJECT_ID!}
+      />
+      <MicrosoftClarity />
     </html>
   );
 }
